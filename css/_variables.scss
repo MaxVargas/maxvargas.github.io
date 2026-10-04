@@ -58,6 +58,12 @@
     --spacing: 2rem;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 header {
     color: var(--color-text);
     font-family: var(--font-heading);
@@ -110,15 +116,18 @@ a {
 }
 
 #nav {
-    width: var(--content-width);
-    margin: 0 auto;
     background: #dfd;
     padding: 0rem 1.5rem;
     border: 2px solid var(--main-border);
 }
-.nav-inner {
+#nav,
+main {
+    width: min(100% - 2rem, var(--content-width));
     max-width: var(--content-width);
     margin: 0 auto;
+}
+.nav-inner {
+    max-width: var(--content-width);
     padding: 0.9rem 1.5rem;
     display: flex;
     align-items: center;
@@ -182,6 +191,7 @@ figure.tikz-cd img {
 }
 
 img {
+    max-width: 100%;
     text-align: center;
 }
 
@@ -253,4 +263,26 @@ img {
 
 .footpara p {
     margin: 0;
+}
+
+///////////
+///////////
+///////////
+@media (max-width: 600px) {
+    #nav {
+        padding: 0;
+    }
+    .nav-inner {
+        padding: 0.75rem;
+    }
+    #nav ul {
+        gap: 0.5rem;
+    }
+    #nav a {
+        font-size: 1.2rem;
+    }
+    main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
