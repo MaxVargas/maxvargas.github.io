@@ -89,6 +89,10 @@ main = hakyllWith hakyllConfiguration $ do
     route $ idRoute
     compile $ copyFileCompiler
 
+  match "robots.txt" $ do
+    route $ idRoute
+    compile $ copyFileCompiler
+
   match "css/style.scss" $ do
     route $ constRoute "css/style.css"
     compile $ compileSass
